@@ -23,12 +23,12 @@ int i, j;
 				putchar((j % 10) + 48);
 				if (i != 98 || j != 99)
 				{	
-					putchar(',');
-					printf(' ');
+					puts(',');
+					puts(' ');
 				}	
 			}	
 		}
 	}
-printf('\n');
+puts('\n');
 return (0);
 }
