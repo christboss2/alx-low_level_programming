@@ -2,9 +2,9 @@
 #include <time.h>
 #include <stdio.h>
 /**
- * main -Print a random nouber and check if it is positive or not
+ * main - Print a random nouber and check if it is positive or not
  *
- * return: 0
+ * Return: 0
 */
 int main(void)
 {
