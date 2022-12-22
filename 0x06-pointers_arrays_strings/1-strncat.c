@@ -1,26 +1,26 @@
-#include "main.h"
-
 /**
- * _strchr - locates a character in a string
+ * _strcat - function that concatenates
+ *          two strings.
  *
- * @c: occurrence of the character
+ * @dest: pointer to destnation input
+ * @src: pointer to source input
  *
- * @s: in the string
- *
- * Return: a pointer to the first occurrence of the character
- */
+ * Return: pointer to resulting string @dest
+*/
 
-char *_strchr(char *s, char c)
+char *_strcat(char *dest, char *src)
 {
-	while (*s)
-	{
-		if (*s != c)
-			s++;
-		else
-			return (s);
-	}
-	if (c == '\0')
-		return (s);
+	int c, c2;
 
-	return (NULL);
+	c = 0;
+	/*find the size of dest array*/
+	while (dest[c])
+		c++;
+
+	/* iterate through each src array value without the null byte*/
+	for (c2 = 0; src[c2] ; c2++)
+		/*append src[c2] to dest[c] while overwritting the null byte in dest*/
+		dest[c++] = src[c2];
+
+	return (dest);
 }

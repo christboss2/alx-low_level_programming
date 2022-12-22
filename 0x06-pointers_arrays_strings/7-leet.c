@@ -1,21 +1,44 @@
-#include "main.h"
-
 /**
- * print_chessboard - prints the chessboard
- * @a: pointer to pieces to print
+ * cap_string - a function that capitalizes
+ *              all words of a string
  *
- * Return: void
- */
-void print_chessboard(char (*a)[8])
-{
-	int i, j;
+ * @s: pointer to char input array
+ *
+ * Return: @s
+*/
 
-	for (i = 0; i < 8; i++)
+char *cap_string(char *s)
+{
+	int i = 0;
+
+	/*iterate through our array values*/
+	while (s[i] != '\0')
 	{
-		for (j = 0; j < 8; j++)
+		/*check for any lowercase letters*/
+		if (s[i] >= 97 && s[i] <= 122)
 		{
-			_putchar(a[i][j]);
+			/**
+			 * if we have a null character
+			 * change its value to capital
+			*/
+			if (i == 0)
+			{
+				s[i] -= 32;
+			}
+			/**
+			 * if we find any character matching the below before any small
+			 * letter we change that value to a capital letter.
+			*/
+			if (s[i - 1] == 32 || s[i - 1] == 9 || s[i - 1] == 10 ||
+				s[i - 1] == 44 || s[i - 1] == 59 || s[i - 1] == 46 ||
+				s[i - 1] == 33 || s[i - 1] == 63 || s[i - 1] == 34 ||
+				s[i - 1] == 40 || s[i - 1] == 41 || s[i - 1] == 123 ||
+				s[i - 1] == 124)
+			{
+				s[i] -= 32;
+			}
 		}
-		_putchar('\n');
+		i++;
 	}
+	return (s);
 }

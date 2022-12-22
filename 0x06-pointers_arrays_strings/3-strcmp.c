@@ -1,32 +1,36 @@
-#include "main.h"
-
 /**
- * _strspn - a function that gets the length of a prefix substring
+ * _strncpy - A function that copies a string.
  *
- * @s: the initial segment of
+ * @dest: pointer to destination input buffer
+ * @src: pointer to source input buffer
+ * @n: bytes of @src
  *
- * @accept: which consist only of bytes from
- *
- * Return: the number of bytes
- */
+ * Return: @dest
+*/
 
-unsigned int _strspn(char *s, char *accept)
+char *_strncpy(char *dest, char *src, int n)
 {
-	int z = 0, x, y;
+	int i;
 
-	for (x = 0; s[x] != '\0'; x++)
+	/**
+	 * iterate through src array
+	 * where if there is no null byte
+	 * among the first n bytes of source
+	 * the string placed in dest will not be
+	 * null terminated
+	*/
+	for (i = 0; i < n && src[i] != '\0'; i++)
+		dest[i] = src[i];
+	/**
+	 * if the length of source is less than n
+	 * write additional nullbytes to dest to
+	 * ensure that a total of n bytes is written
+	*/
+	while (i < n)
 	{
-		if (s[x] != 32)
-		{
-			for (y = 0; accept[y] != '\0'; y++)
-			{
-				if (s[x] == accept[y])
-					z++;
-			}
-		}
-		else
-			return (z);
+		dest[i] = '\0';
+		i++;
 	}
-		return (z);
 
+	return (dest);
 }
