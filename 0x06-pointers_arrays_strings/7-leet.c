@@ -1,44 +1,37 @@
 /**
- * cap_string - a function that capitalizes
- *              all words of a string
+ * leet - a function that encodes a string into 1337
  *
- * @s: pointer to char input array
+ * @s: string input
  *
  * Return: @s
 */
 
-char *cap_string(char *s)
+char *leet(char *s)
 {
-	int i = 0;
+	int i, c = 0;
+	int sl[] = {97, 101, 111, 116, 108};
+	int ul[] = {65, 69, 79, 84, 76};
+	int n[] = {52, 51, 48, 55, 49};
 
-	/*iterate through our array values*/
-	while (s[i] != '\0')
+	/*iterate values in array s*/
+	while (s[c] != '\0')
 	{
-		/*check for any lowercase letters*/
-		if (s[i] >= 97 && s[i] <= 122)
+		/**
+		 * loop through array value five times
+		 * to check if the value is equal to
+		 * any small letter in array sl or
+		 * upper letter in array ul and if it
+		 * is replace it with the value in array n
+		*/
+		for (i = 0; i < 5; i++)
 		{
-			/**
-			 * if we have a null character
-			 * change its value to capital
-			*/
-			if (i == 0)
+			if (s[c] == sl[i] || s[c] == ul[i])
 			{
-				s[i] -= 32;
-			}
-			/**
-			 * if we find any character matching the below before any small
-			 * letter we change that value to a capital letter.
-			*/
-			if (s[i - 1] == 32 || s[i - 1] == 9 || s[i - 1] == 10 ||
-				s[i - 1] == 44 || s[i - 1] == 59 || s[i - 1] == 46 ||
-				s[i - 1] == 33 || s[i - 1] == 63 || s[i - 1] == 34 ||
-				s[i - 1] == 40 || s[i - 1] == 41 || s[i - 1] == 123 ||
-				s[i - 1] == 124)
-			{
-				s[i] -= 32;
+				s[c] = n[i];
+				break;
 			}
 		}
-		i++;
+		c++;
 	}
 	return (s);
 }
